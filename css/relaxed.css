@@ -2,6 +2,9 @@
 
 body {
 	font-family: 'Titillium Web', Arial, Verdana, Geneva, Helvetica, sans-serif;
+
+	padding: 10px;
+	margin: 0;
 }
 
 #wrapper {
@@ -12,6 +15,8 @@ body {
 .block {
 	padding: 5px;
 	text-align: center;
+	min-height: 150px;
+
 	cursor: pointer;
 }
 .block-site {
@@ -25,11 +30,37 @@ body {
 	color: #f5f2ce;
 	opacity: 1;
 }
-.light a {
+.light a, .white a {
 	color: gray;
 	opacity: .4;
 }
-.light a:hover {
+.light a:hover, .white a:hover {
 	color: darkgray;
 	opacity: 1;
+}
+.white {
+	border: 1px solid gray;
+}
+
+#footer {
+	width: 400px;
+	padding: 10px 50px;
+	margin: 0 auto;
+
+	font-size: 8pt;
+	line-height: 10pt;
+
+	color: gray;
+}
+#footer a {
+	color: gray;
+}
+#footer a:hover {
+	color: darkgray;
+}
+#footer .small {
+	margin-top: 7px;
+
+	font-size: 90%;
+	line-height: 90%;
 }
