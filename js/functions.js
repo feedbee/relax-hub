@@ -1,0 +1,1 @@
+if (!Array.prototype.forEach){Array.prototype.forEach=function(fn,sc){for(var i=0,l=this.length;i<l;++i){fn.call(sc,this[i],i,this);}}}
