@@ -49,14 +49,22 @@ var playerStatus;
             "bgcolor": "54a6d6",
             "blockStyle": "dark",
             "site": "sky.fm"
-        }
+        },
+        {
+            "id": "relax-ua",
+            "comment": "Relax (UA)",
+            "url": "http://stream.radiorelax.com.ua/Relax",
+            "bgcolor": "white",
+            "blockStyle": "white",
+            "site": "www.radiorelax.com.ua"
+        }        
     ];
 
     channels.forEach(function(el) {
         $('<div class="block ' + el.blockStyle + '" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
                     + '<div><img src="images/' + el.id + '.png" alt="' + el.comment + '" /></div>'
                     + '<div id="' + el.id + '"></div>'
-                    + '<div class="block-site"><a href="http://' + el.site + '/">' + el.site + '</a></div>'
+                    + '<div class="block-site"><a href="http://' + el.site + '">' + el.site + '</a></div>'
                 + '</div>')
             .on("click", function(e) {
                 if (e.target.tagName != "OBJECT") uppodSend($(this).data('player-id'), 'toggle');
