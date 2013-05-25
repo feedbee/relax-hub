@@ -15,6 +15,7 @@ var playerStatus;
             "comment": "За облаками Relax",
             "url": "http://195.88.63.114:8001/relax",
             "bgcolor": "079ed7",
+            "blockStyle": "dark",
             "site": "www.zaoblakami.ru"
         },
         {
@@ -22,6 +23,7 @@ var playerStatus;
             "comment": "Chillounge Station",
             "url": "http://www.chilloungestation.com:8000/chilloungestation-playlist",
             "bgcolor": "388600",
+            "blockStyle": "dark",
             "site": "www.chilloungestation.com"
         },
         {
@@ -29,6 +31,7 @@ var playerStatus;
             "comment": "Relax FM",
             "url": "http://92.241.191.130/stream/4014/?format=flv",
             "bgcolor": "ffdc8b",
+            "blockStyle": "light",
             "site": "www.relax-fm.ru"
         },
         {
@@ -36,6 +39,7 @@ var playerStatus;
             "comment": "SanFM Relax",
             "url": "http://sanfm.ru:8000/relax",
             "bgcolor": "bfe253",
+            "blockStyle": "light",
             "site": "sanfm.ru/relax/"
         },
         {
@@ -43,12 +47,13 @@ var playerStatus;
             "comment": "SKY.FM Relaxation",
             "url": "http://pub3.sky.fm/sky_relaxation_aacplus?type=.flv",
             "bgcolor": "54a6d6",
+            "blockStyle": "dark",
             "site": "sky.fm"
         }
     ];
 
     channels.forEach(function(el) {
-        $('<div class="block" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
+        $('<div class="block ' + el.blockStyle + '" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
                     + '<div><img src="images/' + el.id + '.png" alt="' + el.comment + '" /></div>'
                     + '<div id="' + el.id + '"></div>'
                     + '<div class="block-site"><a href="http://' + el.site + '/">' + el.site + '</a></div>'
