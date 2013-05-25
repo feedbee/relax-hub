@@ -7,6 +7,28 @@ body {
 	margin: 0;
 }
 
+#logo {
+	background: url("../images/relax.png") left top no-repeat;
+	height: 128px;
+	width: 128px;
+	position: fixed;
+	overflow: hidden;
+
+	margin-left: -160px;
+
+	opacity: .1;
+}
+#logo:hover {
+	height: 160px;
+	opacity: 1;
+}
+#logo .title {
+	margin-top: 130px;
+	text-align: center;
+
+	font-size: 15pt;
+}
+
 #wrapper {
 	width: 500px;
 	margin: 0 auto;
