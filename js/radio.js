@@ -62,6 +62,7 @@ var playerStatus;
 
     channels.forEach(function(el) {
         $('<div class="block ' + el.blockStyle + '" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
+                    + '<div class="display"></div>'
                     + '<div><img src="images/' + el.id + '.png" alt="' + el.comment + '" /></div>'
                     + '<div id="' + el.id + '"></div>'
                     + '<div class="block-site"><a href="http://' + el.site + '">' + el.site + '</a></div>'
@@ -85,18 +86,26 @@ var playerStatus;
         new swfobject.embedSWF(options.player.url, el.id, options.player.width, options.player.height, options.player.version, false, flashvars, params);
     });
 
-    playerStatus = function (status) {
+    var display = function (playerId, text) {
+        var b = $('#' + playerId).parent().find('.display');
+        b.text(text);
+    };
+
+    playerStatus = function (playerId, status) {
         var firstChar = document.title.substring(0, 1);
         switch (status) {
             case "play":
+                display(playerId, "\u25b8");
                 if (firstChar == "\u25b8") return;
                 if (firstChar == "\u28e4") document.title = document.title.substring(2);
                 document.title = "\u25b8 " + document.title;
                 break;
             case "stop":
+                display(playerId, "");
                 if (firstChar == "\u25b8" || firstChar == "\u28e4") document.title = document.title.substring(2);
                 break;
             case "pause":
+                display(playerId, "\u28e4");
                 if (firstChar == "\u28e4") return;
                 if (firstChar == "\u25b8") document.title = document.title.substring(2);
                 document.title = "\u28e4 " + document.title;

@@ -16,15 +16,15 @@
 				break;
 			
 			case 'play': 
-				playerStatus('play');
+				playerStatus(playerID, event);
 				break;
 				
 			case 'pause': 
-				playerStatus('pause');
+				playerStatus(playerID, event);
 				break;
 				
 			case 'stop': 
-				playerStatus('stop');
+				playerStatus(playerID, event);
 				break;
 				
 			case 'seek': 
