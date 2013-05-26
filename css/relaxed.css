@@ -13,10 +13,14 @@ body {
 	width: 128px;
 	position: fixed;
 	overflow: hidden;
-
 	margin-left: -160px;
 
 	opacity: .1;
+
+	-moz-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
 }
 #logo:hover {
 	height: 160px;
