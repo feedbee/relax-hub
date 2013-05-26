@@ -23,7 +23,7 @@ body {
     transition: opacity .5s;
 }
 #logo:hover {
-	height: 160px;
+	height: auto;
 	opacity: 1;
 }
 #logo .title {
@@ -99,4 +99,11 @@ body {
 
 	font-size: 90%;
 	line-height: 90%;
+}
+
+/* AddThis style override */
+.addthis_floating_style {
+	position: relative !important;
+	left: 30px !important;
+	top: 15px !important;§
 }
