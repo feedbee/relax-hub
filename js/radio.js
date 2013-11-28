@@ -19,12 +19,12 @@ var playerStatus;
             "site": "www.zaoblakami.ru"
         },
         {
-            "id": "chillounge-station",
-            "comment": "Chillounge Station",
-            "url": "http://www.chilloungestation.com:8000/chilloungestation-playlist",
+            "id": "lite-sound-session",
+            "comment": "Light sound session",
+            "url": "http://www.litesoundsession.com:8000/lite",
             "bgcolor": "388600",
             "blockStyle": "dark",
-            "site": "www.chilloungestation.com"
+            "site": "www.litesoundsession.com"
         },
         {
             "id": "relax-fm",
