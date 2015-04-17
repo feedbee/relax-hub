@@ -17,7 +17,7 @@ var playerStatus;
             "url": "http://195.88.63.114:8000/relax",
             "bgcolor": "079ed7",
             "blockStyle": "dark",
-            "site": "www.zaoblakami.ru"
+            "site": "http://www.zaoblakami.ru"
         },
         {
             "id": "lite-sound-session",
@@ -26,7 +26,7 @@ var playerStatus;
             "url": "http://www.litesoundsession.com:8000/lite",
             "bgcolor": "388600",
             "blockStyle": "dark",
-            "site": "www.litesoundsession.com"
+            "site": "http://www.litesoundsession.com"
         },
         {
             "id": "relax-fm",
@@ -44,16 +44,16 @@ var playerStatus;
             "url": "http://sanfm.ru:8000/relax",
             "bgcolor": "bfe253",
             "blockStyle": "light",
-            "site": "sanfm.ru/relax/"
+            "site": "http://sanfm.ru/relax/"
         },
         {
-            "id": "skyfm-relaxation",
-            "comment": "SKY.FM Relaxation",
+            "id": "radio-tunes-relaxation",
+            "comment": "RadioTunes Relaxation",
             "style": "uppod/audio154-811.txt",
-            "url": "http://pub3.sky.fm/sky_relaxation_aacplus?type=.flv",
-            "bgcolor": "54a6d6",
+            "url": "http://pub5.radiotunes.com/radiotunes_relaxation_aacplus?type=.flv",
+            "bgcolor": "0e61a7",
             "blockStyle": "dark",
-            "site": "sky.fm"
+            "site": "http://www.radiotunes.com/relaxation"
         },
         {
             "id": "relax-ua",
@@ -62,7 +62,7 @@ var playerStatus;
             "url": "http://stream.radiorelax.com.ua/Relax",
             "bgcolor": "white",
             "blockStyle": "white",
-            "site": "www.radiorelax.com.ua"
+            "site": "http://www.radiorelax.com.ua"
         }        
     ];
 
@@ -71,7 +71,7 @@ var playerStatus;
                     + '<div class="display"></div>'
                     + '<div><img src="images/' + el.id + '.png" alt="' + el.comment + '" /></div>'
                     + '<div id="' + el.id + '"></div>'
-                    + '<div class="block-site"><a href="http://' + el.site + '">' + el.site + '</a></div>'
+                    + '<div class="block-site"><a href="' + el.site + '">' + el.site + '</a></div>'
                 + '</div>')
             .on("click", function(e) {
                 if (e.target.tagName != "OBJECT") uppodSend($(this).data('player-id'), 'toggle');
