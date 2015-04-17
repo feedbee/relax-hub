@@ -59,7 +59,7 @@ var playerStatus;
             "id": "relax-ua",
             "comment": "Relax (UA)",
             "style": "uppod/audio154-812.txt",
-            "url": "http://stream.radiorelax.com.ua/Relax",
+            "url": "http://online-radiorelax2.tavrmedia.ua/RadioRelax_Instrumental",
             "bgcolor": "white",
             "blockStyle": "white",
             "site": "http://www.radiorelax.com.ua"
