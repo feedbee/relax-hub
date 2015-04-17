@@ -29,7 +29,7 @@ var playerStatus;
         {
             "id": "relax-fm",
             "comment": "Relax FM",
-            "url": "http://92.241.191.130/stream/4014/?format=flv",
+            "url": "http://eu4.101.ru:8000/v13_1",
             "bgcolor": "ffdc8b",
             "blockStyle": "light",
             "site": "www.relax-fm.ru"
