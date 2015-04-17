@@ -103,20 +103,22 @@ var playerStatus;
             case "play":
                 display(playerId, "\u25b8");
                 if (firstChar == "\u25b8") return;
-                if (firstChar == "\u28e4") document.title = document.title.substring(2);
+                if (firstChar == "\u2759") document.title = document.title.substring(3);
                 document.title = "\u25b8 " + document.title;
                 break;
             case "stop":
+            case "end":
+            case "error":
                 display(playerId, "");
-                if (firstChar == "\u25b8" || firstChar == "\u28e4") document.title = document.title.substring(2);
+                if (firstChar == "\u25b8") document.title = document.title.substring(2);
+                else if (firstChar == "\u2759") document.title = document.title.substring(3);
                 break;
             case "pause":
-                display(playerId, "\u28e4");
-                if (firstChar == "\u28e4") return;
+                display(playerId, "\u2759\u2759");
+                if (firstChar == "\u2759") return;
                 if (firstChar == "\u25b8") document.title = document.title.substring(2);
-                document.title = "\u28e4 " + document.title;
+                document.title = "\u2759\u2759 " + document.title;
                 break;
         }
     };
 })();
-
