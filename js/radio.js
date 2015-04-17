@@ -13,7 +13,7 @@ var playerStatus;
         {
             "id": "za-oblakami-relax",
             "comment": "За облаками Relax",
-            "url": "http://195.88.63.114:8001/relax",
+            "url": "http://195.88.63.114:8000/relax",
             "bgcolor": "079ed7",
             "blockStyle": "dark",
             "site": "www.zaoblakami.ru"
