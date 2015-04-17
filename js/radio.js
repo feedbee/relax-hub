@@ -4,7 +4,7 @@ var playerStatus;
         "player": {
             "url": "uppod/uppod.swf",
             "width": 280,
-            "height": 35,
+            "height": 37,
             "version": "9.0.115.0",
             "style": "uppod/audio154-647.txt"
         }
@@ -13,6 +13,7 @@ var playerStatus;
         {
             "id": "za-oblakami-relax",
             "comment": "За облаками Relax",
+            "style": "uppod/audio154-647.txt",
             "url": "http://195.88.63.114:8000/relax",
             "bgcolor": "079ed7",
             "blockStyle": "dark",
@@ -21,6 +22,7 @@ var playerStatus;
         {
             "id": "lite-sound-session",
             "comment": "Light sound session",
+            "style": "uppod/audio154-808.txt",
             "url": "http://www.litesoundsession.com:8000/lite",
             "bgcolor": "388600",
             "blockStyle": "dark",
@@ -29,6 +31,7 @@ var playerStatus;
         {
             "id": "relax-fm",
             "comment": "Relax FM",
+            "style": "uppod/audio154-809.txt",
             "url": "http://eu4.101.ru:8000/v13_1",
             "bgcolor": "ffdc8b",
             "blockStyle": "light",
@@ -36,6 +39,7 @@ var playerStatus;
         },
         {
             "id": "sanfm-relax",
+            "style": "uppod/audio154-810.txt",
             "comment": "SanFM Relax",
             "url": "http://sanfm.ru:8000/relax",
             "bgcolor": "bfe253",
@@ -45,6 +49,7 @@ var playerStatus;
         {
             "id": "skyfm-relaxation",
             "comment": "SKY.FM Relaxation",
+            "style": "uppod/audio154-811.txt",
             "url": "http://pub3.sky.fm/sky_relaxation_aacplus?type=.flv",
             "bgcolor": "54a6d6",
             "blockStyle": "dark",
@@ -53,6 +58,7 @@ var playerStatus;
         {
             "id": "relax-ua",
             "comment": "Relax (UA)",
+            "style": "uppod/audio154-812.txt",
             "url": "http://stream.radiorelax.com.ua/Relax",
             "bgcolor": "white",
             "blockStyle": "white",
@@ -76,7 +82,7 @@ var playerStatus;
             "uid": el.id,
             "file": el.url,
             "comment": el.comment,
-            "st": options.player.style
+            "st": el.style || options.player.style
         };
         var params = {
             "id": el.id,
