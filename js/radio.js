@@ -35,7 +35,7 @@ var playerStatus;
             "url": "http://eu4.101.ru:8000/v13_1",
             "bgcolor": "ffdc8b",
             "blockStyle": "light",
-            "site": "www.relax-fm.ru"
+            "site": "http://www.relax-fm.ru"
         },
         {
             "id": "sanfm-relax",
