@@ -51,7 +51,7 @@ var playerStatus;
             "comment": "RadioTunes Relaxation",
             "style": "uppod/audio154-811.txt",
             "url": "http://pub5.radiotunes.com/radiotunes_relaxation_aacplus?type=.flv",
-            "bgcolor": "0e61a7",
+            "bgcolor": "005caa",
             "blockStyle": "dark",
             "site": "http://www.radiotunes.com/relaxation"
         },
