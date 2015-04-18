@@ -32,14 +32,14 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
     },{
         "id": "relax-fm",
         "comment": "Relax FM",
-        "style": "uppod/audio154-809.txt",
+        "style": "uppod/audio154-814.txt",
         "url": "http://eu4.101.ru:8000/v13_1",
         "bgcolor": "ffdc8b",
         "blockStyle": "light",
         "site": "http://www.relax-fm.ru"
     },{
         "id": "sanfm-relax",
-        "style": "uppod/audio154-810.txt",
+        "style": "uppod/audio154-815.txt",
         "comment": "SanFM Relax",
         "url": "http://sanfm.ru:8000/relax",
         "bgcolor": "bfe253",
@@ -56,7 +56,7 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
     },{
         "id": "relax-ua",
         "comment": "Relax (UA)",
-        "style": "uppod/audio154-812.txt",
+        "style": "uppod/audio154-816.txt",
         "url": "http://online-radiorelax2.tavrmedia.ua/RadioRelax_Instrumental",
         "bgcolor": "white",
         "blockStyle": "white",
