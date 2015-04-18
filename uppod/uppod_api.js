@@ -1,80 +1,20 @@
 //	JavaScript API 2.0 for Uppod 1+
 //  http://uppod.ru/js
 
-	// Events
-	
-	function uppodEvent(playerID,event) { 
+// Events
 
-		switch(event){
-		
-			case 'init': 
-			
-				break;
-				
-			case 'start': 
-			
-				break;
-			
-			case 'play': 
-				playerStatus(playerID, event);
-				break;
-				
-			case 'pause': 
-				playerStatus(playerID, event);
-				break;
-				
-			case 'stop': 
-				playerStatus(playerID, event);
-				break;
-				
-			case 'seek': 
-							
-				break;
-				
-			case 'loaded':
-				
-				break;
-				
-			case 'end':
-				
-				break;
-				
-			case 'download':
-				
-				break;
-				
-			case 'quality':
-				
-				break;
-			
-			case 'error':
-				
-				break;
-					
-			case 'ad_end':
-				
-				break;
-				
-			case 'pl':
-				
-				break;
-			
-			case 'volume':
-				
-				break;
-		}
-		
-	}
-	
-	// Commands
-	
-	function uppodSend(playerID,com,callback) {
-		document.getElementById(playerID).sendToUppod(com);
-	}
-	
-	// Requests
-	
-	function uppodGet(playerID,com,callback) {
-		return document.getElementById(playerID).getUppod(com);
-	}
+function uppodEvent(playerID, event) { 
+	playerStatusChanged(playerID, event);
+}
 
+// Commands
+
+function uppodSend(playerID, com, callback) {
+	document.getElementById(playerID).sendToUppod(com);
+}
+
+// Requests
+
+function uppodGet(playerID, com, callback) {
+	return document.getElementById(playerID).getUppod(com);
+}

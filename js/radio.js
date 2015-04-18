@@ -1,5 +1,8 @@
-var playerStatus; // used by Uppod player (SWF)
+var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
 (function () {
+
+    // Settings
+
     var options = {
         "player": {
             "url": "uppod/uppod.swf",
@@ -9,6 +12,7 @@ var playerStatus; // used by Uppod player (SWF)
             "style": "uppod/audio154-647.txt"
         }
     };
+
     var channels = [{
         "id": "za-oblakami-relax",
         "comment": "За облаками Relax",
@@ -59,6 +63,8 @@ var playerStatus; // used by Uppod player (SWF)
         "site": "http://www.radiorelax.com.ua"
     }];
 
+    // Initialization
+
     channels.forEach(function(el) {
         $('<div class="block ' + el.blockStyle + ' block-' + el.id + '" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
             +     '<div class="display"></div>'
@@ -86,6 +92,18 @@ var playerStatus; // used by Uppod player (SWF)
         };
         new swfobject.embedSWF(options.player.url, el.id, options.player.width, options.player.height, options.player.version, false, flashvars, params);
     });
+
+    // Controll helpers
+
+    var stopOthers = function (playerId) {
+        channels.forEach(function(el) {
+            if (el.id != playerId) {
+                uppodSend(el.id, 'stop');
+            }
+        });
+    };
+
+    // View helpers
 
     var renderPlayerStatus = function (playerId, text) {
         var b = $('#' + playerId).parent().find('.display');
@@ -116,9 +134,12 @@ var playerStatus; // used by Uppod player (SWF)
         setTitlePrefix(text);
     };
 
-    playerStatus = function (playerId, status) {
+    // Players events handling
+
+    playerStatusChanged = function (playerId, status) {
         switch (status) {
             case "play":
+                stopOthers(playerId);
                 setStatus(playerId, playSymbol);
                 break;
 
