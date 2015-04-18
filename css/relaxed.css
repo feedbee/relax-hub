@@ -37,6 +37,9 @@ body.theme-ocean-view {
 
 	font-size: 15pt;
 }
+.theme-ocean-view #logo .title {
+	color: white;
+}
 
 #wrapper {
 	width: 500px;
