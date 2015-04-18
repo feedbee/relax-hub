@@ -3,7 +3,7 @@
 
 // Events
 
-function uppodEvent(playerID, event) { 
+function uppodEvent(playerID, event) {
 	playerStatusChanged(playerID, event);
 }
 
