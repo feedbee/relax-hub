@@ -39,7 +39,7 @@ body {
 }
 
 .block {
-	padding: 5px;
+	padding: 10px;
 	text-align: center;
 	min-height: 150px;
 
@@ -99,6 +99,29 @@ body {
 
 	font-size: 90%;
 	line-height: 90%;
+}
+
+.block-za-oblakami-relax .block-logo {
+	margin: 5px;
+	height: 80px;
+}
+.block-lite-sound-session .block-logo {
+	margin: 9px;
+}
+.block-relax-fm .block-logo {
+	margin: 5px;
+}
+.block-sanfm-relax .block-logo {
+	margin: 6px 0 15px;
+}
+.block-radio-tunes-relaxation .block-logo {
+	margin: 17px 0 6px;
+}
+.block-relax-ua {
+	padding-top:8px;
+}
+.block-relax-ua .block-logo {
+	height: 90px;
 }
 
 /* AddThis style override */

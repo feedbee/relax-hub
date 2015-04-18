@@ -67,9 +67,9 @@ var playerStatus;
     ];
 
     channels.forEach(function(el) {
-        $('<div class="block ' + el.blockStyle + '" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
+        $('<div class="block ' + el.blockStyle + ' block-' + el.id + '" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
                     + '<div class="display"></div>'
-                    + '<div><img src="images/' + el.id + '.png" alt="' + el.comment + '" /></div>'
+                    + '<div><img class="block-logo" src="images/' + el.id + '.png" alt="' + el.comment + '" /></div>'
                     + '<div id="' + el.id + '"></div>'
                     + '<div class="block-site"><a href="' + el.site + '">' + el.site + '</a></div>'
                 + '</div>')
