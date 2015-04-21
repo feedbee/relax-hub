@@ -1,4 +1,3 @@
-var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
 (function () {
 
     // Settings
@@ -139,7 +138,7 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
 
     // Players events handling
 
-    playerStatusChanged = function (playerId, status) {
+    var playerStatusChanged = function (playerId, status) {
         switch (status) {
             case "play":
                 stopOthers(playerId);
@@ -158,4 +157,5 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
                 break;
         }
     };
+    RelaxHub.Player.onStatusChanged = playerStatusChanged;
 })();

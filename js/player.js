@@ -26,6 +26,9 @@ RelaxHub.Player.create = function (el) {
         return new RelaxHub.Player.Html5(el);
     }
 };
+RelaxHub.Player.handleGlobalEvent = function (playerID, event) {
+    RelaxHub.Player.onStatusChanged.call(undefined, playerID, event);
+};  
 
 RelaxHub.Player.prototype.getId = function () {
     return this._el.id;
@@ -99,7 +102,7 @@ RelaxHub.Player.Html5.prototype.insert = function ($appendTo) {
     this._player = new Uppod({m: "video", uid: el.id, file: el.streamUrl, st: el.html5Style});
 
     var playerEventHandler = function (event) {
-        playerStatusChanged(event.target.id, event.type);
+        RelaxHub.Player.handleGlobalEvent(event.target.id, event.type);
     };
     var playerHtmlElement = $("#" + el.id).get(0);
     playerHtmlElement.addEventListener("play", playerEventHandler);
