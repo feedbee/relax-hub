@@ -26,8 +26,23 @@ RelaxHub.Player.create = function (el) {
         return new RelaxHub.Player.Html5(el);
     }
 };
-RelaxHub.Player.handleGlobalEvent = function (playerID, event) {
-    RelaxHub.Player.onStatusChanged.call(undefined, playerID, event);
+RelaxHub.Player.handleGlobalEvent = function (playerID, status) {
+    switch (status) {
+        case "play":
+            RelaxHub.Player.onPlay.call(undefined, playerID);
+            break;
+
+        case "stop":
+        case "end":
+        case "error":
+        case "player_error":
+            RelaxHub.Player.onStop.call(undefined, playerID);
+            break;
+
+        case "pause":
+            RelaxHub.Player.onPause.call(undefined, playerID);
+            break;
+    }
 };  
 
 RelaxHub.Player.prototype.getId = function () {

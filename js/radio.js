@@ -116,46 +116,23 @@
         }
     };
 
-    var setStatus = function (playerId, status) {
-        switch (status)
-        {
-            case "":
-                renderPlayerStatus(playerId, "");
-                setTitlePrefix("");
-                break;
-
-            case "play":
-                renderPlayerStatus(playerId, playSymbol);
-                setTitlePrefix(playSymbolTitle);
-                break;
-
-            case "pause":
-                renderPlayerStatus(playerId, pauseSymbol);
-                setTitlePrefix(pauseSymbol);
-                break;
-        }
-    };
-
     // Players events handling
 
-    var playerStatusChanged = function (playerId, status) {
-        switch (status) {
-            case "play":
-                stopOthers(playerId);
-                setStatus(playerId, "play");
-                break;
-
-            case "stop":
-            case "end":
-            case "error":
-            case "player_error":
-                setStatus(playerId, "");
-                break;
-
-            case "pause":
-                setStatus(playerId, "pause");
-                break;
-        }
+    var onPlay = function (playerId) {
+        stopOthers(playerId);
+        
+        renderPlayerStatus(playerId, playSymbol);
+        setTitlePrefix(playSymbolTitle);
     };
-    RelaxHub.Player.onStatusChanged = playerStatusChanged;
+    var onPause = function (playerId) {
+        renderPlayerStatus(playerId, pauseSymbol);
+        setTitlePrefix(pauseSymbol);
+    };
+    var onStop = function (playerId) {
+        renderPlayerStatus(playerId, "");
+        setTitlePrefix("");
+    };
+    RelaxHub.Player.onPlay = onPlay;
+    RelaxHub.Player.onPause = onPause;
+    RelaxHub.Player.onStop = onStop;
 })();
