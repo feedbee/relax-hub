@@ -1,8 +1,12 @@
 RelaxHub = typeof(RelaxHub) == "undefined" ? {} : RelaxHub;
 
+// RelaxHub.Player
+// ---------------
+
 RelaxHub.Player = function (el) {
     this._el = el;
 };
+
 RelaxHub.Player.detectMode = function () {
     if (typeof swfobject !== 'undefined' && swfobject.getFlashPlayerVersion().major !== 0) {
         RelaxHub.Player.mode = "flash";
@@ -11,16 +15,22 @@ RelaxHub.Player.detectMode = function () {
     }
     return RelaxHub.Player.mode;
 };
+
+RelaxHub.Player.create = function (el) {
+    if (!RelaxHub.Player.mode) {
+        RelaxHub.Player.detectMode();
+    }
+    if (RelaxHub.Player.mode == 'flash') {
+        return new RelaxHub.Player.Flash(el);
+    } else {
+        return new RelaxHub.Player.Html5(el);
+    }
+};
+
 RelaxHub.Player.prototype.getId = function () {
     return this._el.id;
 };
-RelaxHub.Player.prototype.insert = function ($appendTo) {
-    if (RelaxHub.Player.mode == "flash") {
-        this.insertFlash($appendTo);
-    } else {
-        this.insertHtml5($appendTo);
-    }
-};
+
 RelaxHub.Player.prototype.insertBlock = function (el, $appendTo) {
     var el = this._el;
     var self = this;
@@ -37,25 +47,18 @@ RelaxHub.Player.prototype.insertBlock = function (el, $appendTo) {
     })
     .appendTo($appendTo);
 };
-RelaxHub.Player.prototype.insertHtml5 = function ($appendTo) {
-    var el = this._el;
 
-    this.insertBlock(el, $appendTo);
+// RelaxHub.Player.Flash
+// ---------------------
 
-    this._player = new Uppod({m: "video", uid: el.id, file: el.streamUrl, st: el.html5Style});
-
-    var playerEventHandler = function (event) {
-        playerStatusChanged(event.target.id, event.type);
-    };
-    var playerHtmlElement = $("#" + el.id).get(0);
-    playerHtmlElement.addEventListener("play", playerEventHandler);
-    playerHtmlElement.addEventListener("stop", playerEventHandler);
-    playerHtmlElement.addEventListener("end", playerEventHandler);
-    playerHtmlElement.addEventListener("error", playerEventHandler);
-    playerHtmlElement.addEventListener("player_error", playerEventHandler);
-    playerHtmlElement.addEventListener("pause", playerEventHandler);
+RelaxHub.Player.Flash = function (el) {
+    RelaxHub.Player.prototype.constructor.call(this, el);
 };
-RelaxHub.Player.prototype.insertFlash = function ($appendTo) {
+
+RelaxHub.Player.Flash.prototype = new RelaxHub.Player();
+RelaxHub.Player.Flash.prototype.constructor = RelaxHub.Player.Flash;
+
+RelaxHub.Player.Flash.prototype.insert = function ($appendTo) {
     var el = this._el;
 
     this.insertBlock(el, $appendTo);
@@ -73,10 +76,40 @@ RelaxHub.Player.prototype.insertFlash = function ($appendTo) {
     };
     new swfobject.embedSWF(el.playerUrl, el.id, el.width, el.height, el.version, false, flashvars, params);
 };
-RelaxHub.Player.prototype.send = function (command) {
-    if (RelaxHub.Player.mode == "flash") {
-        uppodSend(this._el.id, command);
-    } else {
-        this._player[command.substring(0, 1).toUpperCase() + command.substring(1)].call(this._player);
-    }
+
+RelaxHub.Player.Flash.prototype.send = function (command) {
+    uppodSend(this._el.id, command);
+};
+
+// RelaxHub.Player.Html5
+// ---------------------
+
+RelaxHub.Player.Html5 = function (el) {
+    RelaxHub.Player.prototype.constructor.call(this, el);
+};
+
+RelaxHub.Player.Html5.prototype = new RelaxHub.Player();
+RelaxHub.Player.Html5.prototype.constructor = RelaxHub.Player.Html5;
+
+RelaxHub.Player.Html5.prototype.insert = function ($appendTo) {
+    var el = this._el;
+
+    this.insertBlock(el, $appendTo);
+
+    this._player = new Uppod({m: "video", uid: el.id, file: el.streamUrl, st: el.html5Style});
+
+    var playerEventHandler = function (event) {
+        playerStatusChanged(event.target.id, event.type);
+    };
+    var playerHtmlElement = $("#" + el.id).get(0);
+    playerHtmlElement.addEventListener("play", playerEventHandler);
+    playerHtmlElement.addEventListener("stop", playerEventHandler);
+    playerHtmlElement.addEventListener("end", playerEventHandler);
+    playerHtmlElement.addEventListener("error", playerEventHandler);
+    playerHtmlElement.addEventListener("player_error", playerEventHandler);
+    playerHtmlElement.addEventListener("pause", playerEventHandler);
+};
+
+RelaxHub.Player.Html5.prototype.send = function (command) {
+    this._player[command.substring(0, 1).toUpperCase() + command.substring(1)].call(this._player);
 };

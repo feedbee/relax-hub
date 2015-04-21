@@ -75,7 +75,7 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
 
     var players = [];
     channels.forEach(function(el) {
-        var player = new RelaxHub.Player($.extend({}, options.player, el));
+        var player = RelaxHub.Player.create($.extend({}, options.player, el));
         player.insert($('#wrapper'));
         players.push(player);
     });
