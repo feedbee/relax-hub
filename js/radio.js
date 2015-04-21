@@ -70,7 +70,7 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
 
     // Initialization
 
-    var mode = RelaxHub.Player.setMode();
+    var mode = RelaxHub.Player.detectMode();
     $(document.body).addClass(mode + '-mode');
 
     var players = [];

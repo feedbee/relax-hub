@@ -3,7 +3,7 @@ RelaxHub = typeof(RelaxHub) == "undefined" ? {} : RelaxHub;
 RelaxHub.Player = function (el) {
     this._el = el;
 };
-RelaxHub.Player.setMode = function () {
+RelaxHub.Player.detectMode = function () {
     if (typeof swfobject !== 'undefined' && swfobject.getFlashPlayerVersion().major !== 0) {
         RelaxHub.Player.mode = "flash";
     } else {
