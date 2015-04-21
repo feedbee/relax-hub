@@ -5,11 +5,10 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
 
     var options = {
         "player": {
-            "url": "uppod/uppod.swf",
+            "playerUrl": "uppod/uppod.swf",
             "width": 280,
             "height": 37,
-            "version": "9.0.115.0",
-            "style": "uppod/audio154-647.txt"
+            "version": "9.0.115.0"
         }
     };
 
@@ -17,88 +16,76 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
         "id": "za-oblakami-relax",
         "comment": "За облаками Relax",
         "style": "uppod/audio154-647.txt",
-        "url": "http://195.88.63.114:8000/relax",
+        "html5Style": "#07b02206306e07407206c06206702203a03002c02207306906402203a02203103503402d03603403702202c02206306e07407206c06d06107206706906e06c06506607402203a03302c02206306e07407206c07306907a06502203a03102e03202c02206d02203a02206107506406906f02202c02207206106406906f02203a03102c02207006106406406906e06702203a03202c02206206f06407906306f06c06f07202203a02206606606606606606602202c02206306e07407206c06d06107206706906e07206906706807402203a03302c02206802203a03303702c02206206706306f06c06f07202203a02203703906506403702202c02206f02203a03103102c02207306307206506506e06306f06c06f07202203a02203703906506403702202c02206306e07407206c06106c07006806102203a03002e03802c02207702203a03203803002c02206306f06e07407206f06c07302203a02207006c06107902c07307406f07002c07406906d06505f07006c06107902c07307006106306502c07606f06c07506d06502c07606f06c06206107206c06906e06502c07407206106606606906302202c02206c06106e06702203a02206506e02202c02206306e07407206c06f07507406806506906706807402203a03203502c02207306806f07706e06106d06502203a03007d",
+        "streamUrl": "http://195.88.63.114:8000/relax",
         "bgcolor": "079ed7",
         "blockStyle": "dark",
-        "site": "http://www.zaoblakami.ru"
+        "siteUrl": "http://www.zaoblakami.ru"
     },{
         "id": "lite-sound-session",
         "comment": "Light sound session",
         "style": "uppod/audio154-808.txt",
-        "url": "http://www.litesoundsession.com:8000/lite",
+        "html5Style": "#07b02206306e07407206c06206702203a03002c02207006106406406906e06702203a03202c02206206f06407906306f06c06f07202203a02206606606606606606602202c02206306e07407206c06d06107206706906e06c06506607402203a03302c02206306e07407206c07306907a06502203a03102e03202c02206d02203a02206107506406906f02202c02207206106406906f02203a03102c02207702203a03203803002c02206306e07407206c06d06107206706906e07206906706807402203a03302c02206802203a03303702c02207306806f07706e06106d06502203a03002c02206206706306f06c06f07202203a02203303803803603003002202c02206f02203a03103102c02207306307206506506e06306f06c06f07202203a02203303803803603003002202c02207306906402203a02203103503402d03803003802202c02206306f06e07407206f06c07302203a02207006c06107902c07307406f07002c07406906d06505f07006c06107902c07307006106306502c07606f06c07506d06502c07606f06c06206107206c06906e06502c07407206106606606906302202c02206c06106e06702203a02206506e02202c02206306e07407206c06f07507406806506906706807402203a03203502c02206306e07407206c06106c07006806102203a03002e03807d",
+        "streamUrl": "http://www.litesoundsession.com:8000/lite",
         "bgcolor": "388600",
         "blockStyle": "dark",
-        "site": "http://www.litesoundsession.com"
+        "siteUrl": "http://www.litesoundsession.com"
     },{
         "id": "relax-fm",
         "comment": "Relax FM",
         "style": "uppod/audio154-814.txt",
-        "url": "http://eu4.101.ru:8000/v13_1",
+        "html5Style": "#07b02206306e07407206c06206702203a03002c02206306e07407206c06f07507406806506906706807402203a03203502c02206306e07407206c06d06107206706906e06c06506607402203a03302c02206306e07407206c06106c07006806102203a03002e03802c02206306e07407206c07306907a06502203a03102e03202c02206d02203a02206107506406906f02202c02207206106406906f02203a03102c02207702203a03203803002c02207306806f07706e06106d06502203a03002c02206306e07407206c06d06107206706906e07206906706807402203a03302c02206802203a03303702c02206206706306f06c06f07202203a02206606606406303806202202c02206f02203a03103102c02207006106406406906e06702203a03202c02207306906402203a02203103503402d03803103402202c02206306f06e07407206f06c07302203a02207006c06107902c07307406f07002c07406906d06505f07006c06107902c07307006106306502c07606f06c07506d06502c07606f06c06206107206c06906e06502c07407206106606606906302202c02206c06106e06702203a02206506e02202c02206306e07407206c06306f06c06f07202203a02206203506306202202c02206206f06407906306f06c06f07202203a02206203506306202202c02207306307206506506e06306f06c06f07202203a02206606606406303806202207d",
+        "streamUrl": "http://eu4.101.ru:8000/v13_1",
         "bgcolor": "ffdc8b",
         "blockStyle": "light",
-        "site": "http://www.relax-fm.ru"
+        "siteUrl": "http://www.relax-fm.ru"
     },{
         "id": "sanfm-relax",
         "style": "uppod/audio154-815.txt",
+        "html5Style": "#07b02206306e07407206c06106c07006806102203a03002e03802c02206206f06407906306f06c06f07202203a02203703006103703106602202c02206306e07407206c06306f06c06f07202203a02203703006103703106602202c02206306e07407206c06f07507406806506906706807402203a03203502c02206306f06e07407206f06c07302203a02207006c06107902c07307406f07002c07406906d06505f07006c06107902c07307006106306502c07606f06c07506d06502c07606f06c06206107206c06906e06502c07407206106606606906302202c02206d02203a02206107506406906f02202c02207306906402203a02203103503402d03803103502202c02207306806f07706e06106d06502203a03002c02206306e07407206c06d06107206706906e06c06506607402203a03302c02206802203a03303702c02206306e07407206c06206702203a03002c02206f02203a03103102c02207206106406906f02203a03102c02207306307206506506e06306f06c06f07202203a02206206606503203503302202c02206206706306f06c06f07202203a02206206606503203503302202c02207006106406406906e06702203a03202c02206306e07407206c06d06107206706906e07206906706807402203a03302c02206306e07407206c07306907a06502203a03102e03202c02207702203a03203803002c02206c06106e06702203a02206506e02207d",
         "comment": "SanFM Relax",
-        "url": "http://sanfm.ru:8000/relax",
+        "streamUrl": "http://sanfm.ru:8000/relax",
         "bgcolor": "bfe253",
         "blockStyle": "light",
-        "site": "http://sanfm.ru/relax/"
+        "siteUrl": "http://sanfm.ru/relax/"
     },{
         "id": "radio-tunes-relaxation",
         "comment": "RadioTunes Relaxation",
         "style": "uppod/audio154-811.txt",
-        "url": "http://pub5.radiotunes.com/radiotunes_relaxation_aacplus?type=.flv",
+        "html5Style": "#07b02206306e07407206c06206702203a03002c02207306906402203a02203103503402d03803103102202c02206306e07407206c06d06107206706906e06c06506607402203a03302c02207006106406406906e06702203a03202c02206306e07407206c07306907a06502203a03102e03202c02206d02203a02206107506406906f02202c02207206106406906f02203a03102c02207702203a03203803002c02207306806f07706e06106d06502203a03002c02206306e07407206c06d06107206706906e07206906706807402203a03302c02206802203a03303702c02206206706306f06c06f07202203a02203506306106102202c02206f02203a03103102c02207306307206506506e06306f06c06f07202203a02203506306106102202c02206306e07407206c06106c07006806102203a03002e03802c02206306e07407206c06f07507406806506906706807402203a03203502c02206306f06e07407206f06c07302203a02207006c06107902c07307406f07002c07406906d06505f07006c06107902c07307006106306502c07606f06c07506d06502c07606f06c06206107206c06906e06502c07407206106606606906302202c02206c06106e06702203a02206506e02202c02206206f06407906306f06c06f07202203a02206606606606606606602207d",
+        "streamUrl": "http://pub5.radiotunes.com/radiotunes_relaxation_aacplus?type=.flv",
         "bgcolor": "005caa",
         "blockStyle": "dark",
-        "site": "http://www.radiotunes.com/relaxation"
+        "siteUrl": "http://www.radiotunes.com/relaxation"
     },{
         "id": "relax-ua",
         "comment": "Relax (UA)",
         "style": "uppod/audio154-816.txt",
-        "url": "http://online-radiorelax2.tavrmedia.ua/RadioRelax_Instrumental",
+        "html5Style": "#07b02206306e07407206c06206702203a03002c02206206f06407906306f06c06f07202203a02206203206403002202c02206306e07407206c06d06107206706906e06c06506607402203a03302c02206306e07407206c07306907a06502203a03102e03202c02206d02203a02206107506406906f02202c02207306806f07706e06106d06502203a03002c02206306e07407206c06f07507406806506906706807402203a03203502c02207306906402203a02203103503402d03803103602202c02206306e07407206c06d06107206706906e07206906706807402203a03302c02206802203a03303702c02206206706306f06c06f07202203a02206606606606606606602202c02206f02203a03103102c02207306307206506506e06306f06c06f07202203a02206606606606606606602202c02206306e07407206c06106c07006806102203a03002e03802c02207702203a03203803002c02206306f06e07407206f06c07302203a02207006c06107902c07307406f07002c07406906d06505f07006c06107902c07307006106306502c07606f06c07506d06502c07606f06c06206107206c06906e06502c07407206106606606906302202c02206c06106e06702203a02206506e02202c02206306e07407206c06306f06c06f07202203a02206203206403002202c02207006106406406906e06702203a03202c02207206106406906f02203a03107d",
+        "streamUrl": "http://online-radiorelax2.tavrmedia.ua/RadioRelax_Instrumental",
         "bgcolor": "white",
         "blockStyle": "white",
-        "site": "http://www.radiorelax.com.ua"
+        "siteUrl": "http://www.radiorelax.com.ua"
     }];
 
     // Initialization
 
-    channels.forEach(function(el) {
-        $('<div class="block ' + el.blockStyle + ' block-' + el.id + '" style="background-color:#' + el.bgcolor + ';" data-player-id="' + el.id + '">'
-            +     '<div class="display"></div>'
-            +     '<div><img class="block-logo" src="images/' + el.id + '.png" alt="' + el.comment + '" /></div>'
-            +     '<div id="' + el.id + '"></div>'
-            +     '<div class="block-site"><a href="' + el.site + '">' + el.site + '</a></div>'
-            + '</div>')
-        .on("click", function(e) {
-            if (["OBJECT", "A"].indexOf(e.target.tagName) == -1) {
-                uppodSend($(this).data('player-id'), 'toggle');
-            }
-        })
-        .appendTo($('#wrapper'));
+    var mode = RelaxHub.Player.setMode();
+    $(document.body).addClass(mode + '-mode');
 
-        var flashvars = {
-            "uid": el.id,
-            "file": el.url,
-            "comment": el.comment,
-            "st": el.style || options.player.style
-        };
-        var params = {
-            "id": el.id,
-            "bgcolor": el.bgcolor, 
-            "allowScriptAccess": "always"
-        };
-        new swfobject.embedSWF(options.player.url, el.id, options.player.width, options.player.height, options.player.version, false, flashvars, params);
+    var players = [];
+    channels.forEach(function(el) {
+        var player = new RelaxHub.Player($.extend({}, options.player, el));
+        player.insert($('#wrapper'));
+        players.push(player);
     });
 
     // Controll helpers
 
     var stopOthers = function (playerId) {
-        channels.forEach(function(el) {
-            if (el.id != playerId) {
-                uppodSend(el.id, 'stop');
+        players.forEach(function(player) {
+            if (player.getId() != playerId) {
+                player.send('stop');
             }
         });
     };
@@ -110,14 +97,15 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
         b.text(text);
     };
 
-    var playSymbol = "\u25b8",
+    var playSymbol = "\u25ba",
+        playSymbolTitle = "\u25b8",
         pauseSymbol = "\u2759\u2759";
     var addTitlePrefix = function (prefix) {
         document.title = prefix + " " + document.title;
     };
     var clearTitlePrefix = function () {
-        if (playSymbol + " " == document.title.substring(0, playSymbol.length + 1)) {
-            document.title = document.title.substring(playSymbol.length + 1);
+        if (playSymbolTitle + " " == document.title.substring(0, playSymbolTitle.length + 1)) {
+            document.title = document.title.substring(playSymbolTitle.length + 1);
         } else if (pauseSymbol + " " == document.title.substring(0, pauseSymbol.length + 1)) {
             document.title = document.title.substring(pauseSymbol.length + 1);
         }
@@ -129,9 +117,24 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
         }
     };
 
-    var setStatus = function (playerId, text) {
-        renderPlayerStatus(playerId, text);
-        setTitlePrefix(text);
+    var setStatus = function (playerId, status) {
+        switch (status)
+        {
+            case "":
+                renderPlayerStatus(playerId, "");
+                setTitlePrefix("");
+                break;
+
+            case "play":
+                renderPlayerStatus(playerId, playSymbol);
+                setTitlePrefix(playSymbolTitle);
+                break;
+
+            case "pause":
+                renderPlayerStatus(playerId, pauseSymbol);
+                setTitlePrefix(pauseSymbol);
+                break;
+        }
     };
 
     // Players events handling
@@ -140,17 +143,18 @@ var playerStatusChanged; // used by Uppod player (SWF) in uppod/uppod_api.js
         switch (status) {
             case "play":
                 stopOthers(playerId);
-                setStatus(playerId, playSymbol);
+                setStatus(playerId, "play");
                 break;
 
             case "stop":
             case "end":
             case "error":
+            case "player_error":
                 setStatus(playerId, "");
                 break;
 
             case "pause":
-                setStatus(playerId, pauseSymbol);
+                setStatus(playerId, "pause");
                 break;
         }
     };

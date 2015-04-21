@@ -2,9 +2,20 @@
 
 body {
 	font-family: 'Titillium Web', Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 12pt;
 
 	padding: 15px;
 	margin: 0;
+}
+@media (max-width: 1000px) {
+	body {
+		padding: 10px;
+	}
+}
+@media (max-width: 800px) {
+	body {
+		padding: 10px 0;
+	}
 }
 body.theme-ocean-view {
 	background-image: url("../images/theme-ocean-view-wallpaper.jpg");
@@ -23,9 +34,9 @@ body.theme-ocean-view {
 	opacity: .1;
 
 	-moz-transition: opacity .5s;
-    -webkit-transition: opacity .5s;
-    -o-transition: opacity .5s;
-    transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	-o-transition: opacity .5s;
+	transition: opacity .5s;
 }
 #logo:hover {
 	height: 500px;
@@ -37,13 +48,59 @@ body.theme-ocean-view {
 
 	font-size: 15pt;
 }
+@media (max-width: 900px) {
+	#logo {
+		position: absolute;
+		margin-left: 0;
+		margin-top: -135px;
+		width: 15em;
+	}
+	#logo .title {
+		margin-top: 47px;
+		margin-left: 7em;
+		text-align: left;
+	}
+}
 .theme-ocean-view #logo .title {
 	color: white;
 }
 
 #wrapper {
-	width: 500px;
+	max-width: 32em;
+	min-width: 20em;
 	margin: 0 auto;
+}
+@media (max-width: 900px) {
+	#wrapper {
+		position: relative;
+		margin-top: 130px;
+	}
+}
+
+.noscript-notification {
+	text-align: center;
+	padding: 20px;
+}
+.theme-ocean-view .noscript-notification {
+	color: white;
+}
+
+.html5-beta-warning {
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 6px solid rgba(100, 100, 100, 0.44);
+	font-size: 90%;
+
+	display: none;
+}
+.html5-mode .html5-beta-warning {
+	display: block;
+}
+
+.theme-ocean-view .html5-beta-warning {
+	color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(100, 100, 100, 0.2);
 }
 
 .block {
@@ -62,6 +119,9 @@ body.theme-ocean-view {
 }
 .block-site {
 	font-size: 75%;
+}
+.html5-mode .block-site {
+	margin-top: 10px;
 }
 .block-site a {
 	color: white;
@@ -84,6 +144,16 @@ body.theme-ocean-view {
 	background-color: white;
 }
 
+.player {
+	width: 280px;
+	height: 37px;
+}
+.html5-mode .player {
+	width: 280px;
+	height: 30px !important;
+	margin: auto;
+}
+
 .display {
 	position: absolute;
 	margin: 0px 7px;
@@ -95,8 +165,8 @@ body.theme-ocean-view {
 }
 
 #footer {
-	width: 400px;
-	padding: 15px 50px 0;
+	max-width: 38em;
+	padding: 1.2em 3em 0;
 	margin: 0 auto;
 
 	font-size: 8pt;
@@ -149,4 +219,9 @@ body.theme-ocean-view {
 	left: 30px !important;
 	top: 15px !important;
 	padding: 7px 4px 0 !important;
+}
+@media (max-width: 900px) {
+	.addthis_floating_style {
+		top: 70px !important;
+	}
 }
