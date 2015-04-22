@@ -4,7 +4,7 @@
 
 // Events handling (proxy to RelaxHub.Player)
 function uppodEvent(playerID, event) {
-	RelaxHub.Player.handleGlobalEvent(playerID, event);
+	RelaxHub.Player.Flash.handleGlobalEvent(playerID, event);
 }
 
 // Commands

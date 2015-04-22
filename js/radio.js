@@ -67,18 +67,6 @@
         "siteUrl": "http://www.radiorelax.com.ua"
     }];
 
-    // Initialization
-
-    var mode = RelaxHub.Player.detectMode();
-    $(document.body).addClass(mode + '-mode');
-
-    var players = [];
-    channels.forEach(function(el) {
-        var player = RelaxHub.Player.create($.extend({}, options.player, el));
-        player.insert($('#wrapper'));
-        players.push(player);
-    });
-
     // Controll helpers
 
     var stopOthers = function (playerId) {
@@ -118,21 +106,38 @@
 
     // Players events handling
 
-    var onPlay = function (playerId) {
-        stopOthers(playerId);
+    var onPlay = function () {
+        stopOthers(this.getId());
         
-        renderPlayerStatus(playerId, playSymbol);
+        renderPlayerStatus(this.getId(), playSymbol);
         setTitlePrefix(playSymbolTitle);
     };
-    var onPause = function (playerId) {
-        renderPlayerStatus(playerId, pauseSymbol);
+    var onPause = function () {
+        renderPlayerStatus(this.getId(), pauseSymbol);
         setTitlePrefix(pauseSymbol);
     };
-    var onStop = function (playerId) {
-        renderPlayerStatus(playerId, "");
+    var onStop = function () {
+        renderPlayerStatus(this.getId(), "");
         setTitlePrefix("");
     };
-    RelaxHub.Player.onPlay = onPlay;
-    RelaxHub.Player.onPause = onPause;
-    RelaxHub.Player.onStop = onStop;
+    // RelaxHub.Player.onPlay = onPlay;
+    // RelaxHub.Player.onPause = onPause;
+    // RelaxHub.Player.onStop = onStop;
+
+    // Initialization
+
+    var mode = RelaxHub.Player.detectMode();
+    $(document.body).addClass(mode + '-mode');
+
+    var players = [];
+    channels.forEach(function(el) {
+        var player = RelaxHub.Player.create($.extend({}, options.player, el));
+        player.insert($('#wrapper'));
+
+        player.onPlay = onPlay;
+        player.onPause = onPause;
+        player.onStop = onStop;
+
+        players.push(player);
+    });
 })();

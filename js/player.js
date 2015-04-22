@@ -26,24 +26,6 @@ RelaxHub.Player.create = function (el) {
         return new RelaxHub.Player.Html5(el);
     }
 };
-RelaxHub.Player.handleGlobalEvent = function (playerID, status) {
-    switch (status) {
-        case "play":
-            RelaxHub.Player.onPlay.call(undefined, playerID);
-            break;
-
-        case "stop":
-        case "end":
-        case "error":
-        case "player_error":
-            RelaxHub.Player.onStop.call(undefined, playerID);
-            break;
-
-        case "pause":
-            RelaxHub.Player.onPause.call(undefined, playerID);
-            break;
-    }
-};
 
 RelaxHub.Player.prototype.getId = function () {
     return this._el.id;
@@ -71,10 +53,34 @@ RelaxHub.Player.prototype.insertBlock = function (el, $appendTo) {
 
 RelaxHub.Player.Flash = function (el) {
     RelaxHub.Player.prototype.constructor.call(this, el);
+    RelaxHub.Player.Flash.instances[el.id] = this;
 };
 
 RelaxHub.Player.Flash.prototype = new RelaxHub.Player();
 RelaxHub.Player.Flash.prototype.constructor = RelaxHub.Player.Flash;
+
+RelaxHub.Player.Flash.instances = {};
+// called from uppod-api.js
+RelaxHub.Player.Flash.handleGlobalEvent = function (playerID, status) {
+    var player = RelaxHub.Player.Flash.instances[playerID];
+    if (player) {
+        switch (status) {
+            case "play":
+                player.onPlay && player.onPlay();
+                break;
+
+            case "stop":
+            case "end":
+            case "error":
+                player.onStop && player.onStop();
+                break;
+
+            case "pause":
+                player.onPause && player.onPause();
+                break;
+        }
+    }
+};
 
 RelaxHub.Player.Flash.prototype.insert = function ($appendTo) {
     var el = this._el;
@@ -116,17 +122,27 @@ RelaxHub.Player.Html5.prototype.insert = function ($appendTo) {
 
     this._player = new Uppod({m: "video", uid: el.id, file: el.streamUrl, st: el.html5Style});
 
-    var playerEventHandler = function (event) {
-        RelaxHub.Player.handleGlobalEvent(event.target.id, event.type);
+    // Subscribe to player events
+    var self = this;
+    var playHandler = function () {
+        self.onPlay && self.onPlay();
     };
+    var stopHandler = function () {
+        self.onStop && self.onStop();
+    };
+    var pauseHandler = function () {
+        self.onPause && self.onPause();
+    };
+
     var playerHtmlElement = $("#" + el.id).get(0);
-    playerHtmlElement.addEventListener("play", playerEventHandler);
-    playerHtmlElement.addEventListener("stop", playerEventHandler);
-    playerHtmlElement.addEventListener("end", playerEventHandler);
-    playerHtmlElement.addEventListener("error", playerEventHandler);
-    playerHtmlElement.addEventListener("player_error", playerEventHandler);
-    playerHtmlElement.addEventListener("pause", playerEventHandler);
+    playerHtmlElement.addEventListener("play", playHandler);
+    playerHtmlElement.addEventListener("stop", stopHandler);
+    playerHtmlElement.addEventListener("end", stopHandler);
+    playerHtmlElement.addEventListener("error", stopHandler);
+    playerHtmlElement.addEventListener("player_error", stopHandler);
+    playerHtmlElement.addEventListener("pause", pauseHandler);
 };
+
 
 RelaxHub.Player.Html5.prototype.send = function (command) {
     this._player[command.substring(0, 1).toUpperCase() + command.substring(1)].call(this._player);
