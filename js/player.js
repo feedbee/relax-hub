@@ -43,7 +43,7 @@ RelaxHub.Player.handleGlobalEvent = function (playerID, status) {
             RelaxHub.Player.onPause.call(undefined, playerID);
             break;
     }
-};  
+};
 
 RelaxHub.Player.prototype.getId = function () {
     return this._el.id;
