@@ -9,4 +9,4 @@ Relax Hub is not commercial project. No advertisement ever was or will be displa
 
 Project code is licensed under MIT license. All logos and audio content are property of their respective owners. Relax Hub name and logo are property of Valera Leontyev and can not be distributed or published be anybody else.
 
-Currently Rekax Hub is available under http://feedbee.github.io/relax-hub/ domain.
+Currently Relax Hub is available under http://feedbee.github.io/relax-hub/ domain.
