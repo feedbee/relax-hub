@@ -67,16 +67,6 @@
         "siteUrl": "http://www.radiorelax.com.ua"
     }];
 
-    // Controll helpers
-
-    var stopOthers = function (playerId) {
-        players.forEach(function(player) {
-            if (player.getId() != playerId) {
-                player.send('stop');
-            }
-        });
-    };
-
     // View helpers
 
     var renderPlayerStatus = function (playerId, text) {
@@ -107,8 +97,6 @@
     // Players events handling
 
     var onPlay = function () {
-        stopOthers(this.getId());
-        
         renderPlayerStatus(this.getId(), playSymbol);
         setTitlePrefix(playSymbolTitle);
     };
@@ -120,24 +108,30 @@
         renderPlayerStatus(this.getId(), "");
         setTitlePrefix("");
     };
-    // RelaxHub.Player.onPlay = onPlay;
-    // RelaxHub.Player.onPause = onPause;
-    // RelaxHub.Player.onStop = onStop;
 
     // Initialization
 
     var mode = RelaxHub.Player.detectMode();
     $(document.body).addClass(mode + '-mode');
 
-    var players = [];
+    var playerCollection = new RelaxHub.Player.Collection();
     channels.forEach(function(el) {
         var player = RelaxHub.Player.create($.extend({}, options.player, el));
         player.insert($('#wrapper'));
 
-        player.onPlay = onPlay;
-        player.onPause = onPause;
-        player.onStop = onStop;
+        player.addEventListener("onPlay", onPlay);
+        player.addEventListener("onPause", onPause);
+        player.addEventListener("onStop", onStop);
 
-        players.push(player);
+        playerCollection.add(player);
+    });
+
+    // Key Socket Media Keys Chrome extension generic API event habdlers
+    // https://chrome.google.com/webstore/detail/key-socket-media-keys/fphfgdknbpakeedbaenojjdcdoajihik?hl=en
+    document.addEventListener("MediaPlayPause", function () {
+        playerCollection.send("toggle");
+    });
+    document.addEventListener("MediaStop", function () {
+        playerCollection.send("stop");
     });
 })();

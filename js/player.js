@@ -5,6 +5,7 @@ RelaxHub = typeof(RelaxHub) == "undefined" ? {} : RelaxHub;
 
 RelaxHub.Player = function (el) {
     this._el = el;
+    this._events = {};
 };
 
 RelaxHub.Player.detectMode = function () {
@@ -48,6 +49,27 @@ RelaxHub.Player.prototype.insertBlock = function (el, $appendTo) {
     .appendTo($appendTo);
 };
 
+RelaxHub.Player.prototype.addEventListener = function (eventName, handler) {
+    if (!(eventName in this._events)) {
+        this._events[eventName] = [];
+    }
+
+    this._events[eventName].push(handler);
+};
+
+RelaxHub.Player.prototype.raiseEvent = function(eventName, args) {
+    var currentEvents = this._events[eventName];
+    if (!currentEvents) {
+        return;
+    }
+
+    for (var i = 0; i < currentEvents.length; i++) {
+        if (typeof currentEvents[i] == 'function') {
+            currentEvents[i].call(this, args);
+        }
+    }
+};
+
 // RelaxHub.Player.Flash
 // ---------------------
 
@@ -66,17 +88,17 @@ RelaxHub.Player.Flash.handleGlobalEvent = function (playerID, status) {
     if (player) {
         switch (status) {
             case "play":
-                player.onPlay && player.onPlay();
+                player.raiseEvent('onPlay');
                 break;
 
             case "stop":
             case "end":
             case "error":
-                player.onStop && player.onStop();
+                player.raiseEvent('onStop');
                 break;
 
             case "pause":
-                player.onPause && player.onPause();
+                player.raiseEvent('onPause');
                 break;
         }
     }
@@ -125,13 +147,13 @@ RelaxHub.Player.Html5.prototype.insert = function ($appendTo) {
     // Subscribe to player events
     var self = this;
     var playHandler = function () {
-        self.onPlay && self.onPlay();
+        self.raiseEvent('onPlay');
     };
     var stopHandler = function () {
-        self.onStop && self.onStop();
+        self.raiseEvent('onStop');
     };
     var pauseHandler = function () {
-        self.onPause && self.onPause();
+        self.raiseEvent('onPause');
     };
 
     var playerHtmlElement = $("#" + el.id).get(0);
@@ -143,7 +165,35 @@ RelaxHub.Player.Html5.prototype.insert = function ($appendTo) {
     playerHtmlElement.addEventListener("pause", pauseHandler);
 };
 
-
 RelaxHub.Player.Html5.prototype.send = function (command) {
     this._player[command.substring(0, 1).toUpperCase() + command.substring(1)].call(this._player);
+};
+
+// RelaxHub.Player.Collection
+// --------------------------
+
+RelaxHub.Player.Collection = function () {
+    this._players = [];
+    this._activePlayer;
+};
+RelaxHub.Player.Collection.prototype.add = function (player) {
+    this._players.push(player);
+    var self = this;
+    var setActiveAndStopOthers = function () {
+        self._activePlayer = this;
+        self.stopOthers(this);
+    };
+    player.addEventListener("onPlay", setActiveAndStopOthers);
+};
+RelaxHub.Player.Collection.prototype.send = function (command) {
+    if (this._activePlayer) {
+        this._activePlayer.send(command);
+    }
+};
+RelaxHub.Player.Collection.prototype.stopOthers = function (player) {
+    this._players.forEach(function(playerI) {
+        if (playerI.getId() != player.getId()) {
+            playerI.send('stop');
+        }
+    });
 };
