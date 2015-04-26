@@ -120,9 +120,6 @@
         renderPlayerStatus(this.getId(), "");
         setTitlePrefix("");
     };
-    // RelaxHub.Player.onPlay = onPlay;
-    // RelaxHub.Player.onPause = onPause;
-    // RelaxHub.Player.onStop = onStop;
 
     // Initialization
 
