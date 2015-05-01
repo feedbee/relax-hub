@@ -126,12 +126,18 @@
         playerCollection.add(player);
     });
 
-    // Key Socket Media Keys Chrome extension generic API event habdlers
+    // Media Control API interaction
+    // https://github.com/feedbee/web-page-media-control-api-spec
+    // for Key Socket Media Keys Chrome extension
     // https://chrome.google.com/webstore/detail/key-socket-media-keys/fphfgdknbpakeedbaenojjdcdoajihik?hl=en
     document.addEventListener("MediaPlayPause", function () {
         playerCollection.send("toggle");
     });
     document.addEventListener("MediaStop", function () {
         playerCollection.send("stop");
+    });
+
+    document.addEventListener('MediaControlApiInit', function() {
+        document.dispatchEvent(new Event("MediaControlled"));
     });
 })();
