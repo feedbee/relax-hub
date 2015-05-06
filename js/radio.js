@@ -136,4 +136,16 @@
     document.addEventListener("MediaStop", function () {
         playerCollection.send("stop");
     });
+    document.addEventListener("MediaPrev", function () {
+        var player = playerCollection.getPrevPlayer();
+        if (player) {
+            player.send("play");
+        }
+    });
+    document.addEventListener("MediaNext", function () {
+        var player = playerCollection.getNextPlayer();
+        if (player) {
+            player.send("play");
+        }
+    });
 })();

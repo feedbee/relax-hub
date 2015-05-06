@@ -178,6 +178,10 @@ RelaxHub.Player.Collection = function () {
 };
 RelaxHub.Player.Collection.prototype.add = function (player) {
     this._players.push(player);
+    if (!this._activePlayer) {
+        this._activePlayer = player;
+    }
+
     var self = this;
     var setActiveAndStopOthers = function () {
         self._activePlayer = this;
@@ -196,4 +200,30 @@ RelaxHub.Player.Collection.prototype.stopOthers = function (player) {
             playerI.send('stop');
         }
     });
+};
+RelaxHub.Player.Collection.prototype.getPrevPlayer = function () {
+    if (this._players.length < 2) {
+        return undefined;
+    } else if (!this._activePlayer) {
+        return this._players[0];
+    } else {
+        for (var i = 0; i < this._players.length; i++) {
+            if (this._players[i].getId() == this._activePlayer.getId()) {
+                return i > 0 ? this._players[i - 1] : this._players[this._players.length - 1];
+            }
+        }
+    }
+};
+RelaxHub.Player.Collection.prototype.getNextPlayer = function () {
+    if (this._players.length < 2) {
+        return undefined;
+    } else if (!this._activePlayer) {
+        return this._players[0];
+    } else {
+        for (var i = 0; i < this._players.length; i++) {
+            if (this._players[i].getId() == this._activePlayer.getId()) {
+                return this._players.length > i + 1 ? this._players[i + 1] : this._players[0];
+            }
+        }
+    }
 };
